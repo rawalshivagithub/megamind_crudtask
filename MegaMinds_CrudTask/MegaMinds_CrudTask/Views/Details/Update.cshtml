@@ -1,0 +1,73 @@
+﻿@model Details
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Edit</title>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend style="font-family:Arial Black;color:Green">Customer</legend>
+            @Html.HiddenFor(model => model.Id)
+            <div class="editor-label" style="font-family:Arial Black">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div class="editor-field" style="color:Red;font-family:Arial">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="editor-label" style="font-family:Arial Black">
+                @Html.LabelFor(model => model.Address)
+            </div>
+            <div class="editor-field" style="color:Red;font-family:Arial">
+                @Html.EditorFor(model => model.Address)
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+            <div class="editor-label" style="font-family:Arial Black">
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div class="editor-field" style="color:Red;font-family:Arial">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div class="editor-label" style="font-family:Arial Black">
+                @Html.LabelFor(model => model.PhoneNumber)
+            </div>
+            <div class="editor-field" style="color:Red;font-family:Arial">
+                @Html.EditorFor(model => model.PhoneNumber)
+                @Html.ValidationMessageFor(model => model.PhoneNumber)
+            </div>
+            <div class="editor-label" style="font-family:Arial Black">
+                @Html.LabelFor(model => model.State)
+            </div>
+            <div class="editor-field" style="color:Red;font-family:Arial">
+                @Html.EditorFor(model => model.State)
+                @Html.ValidationMessageFor(model => model.State)
+            </div>
+            <div class="editor-label" style="font-family:Arial Black">
+                @Html.LabelFor(model => model.City)
+            </div>
+            <div class="editor-field" style="color:Red;font-family:Arial">
+                @Html.EditorFor(model => model.City)
+                @Html.ValidationMessageFor(model => model.City)
+            </div>
+            <p>
+                <input type="submit" value="Save" style="color:Navy;font-family:Arial; font-size:large" />
+            </p>
+        </fieldset>
+    }
+    <div style="color:Blue;font-family:Arial">
+        @Html.ActionLink("Back to Details Records", "Index")
+    </div>
+</body>
+</html>   

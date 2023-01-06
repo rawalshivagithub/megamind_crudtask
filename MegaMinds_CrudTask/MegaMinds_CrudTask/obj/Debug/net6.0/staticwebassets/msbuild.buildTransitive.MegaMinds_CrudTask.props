@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\MegaMinds_CrudTask.props" />
+</Project>
