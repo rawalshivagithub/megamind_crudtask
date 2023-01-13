@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MegaMinds\\MegaMinds_CrudTask\\MegaMinds_CrudTask\\MegaMinds_CrudTask.csproj": {}
+    "D:\\megamind\\MegaMinds_CrudTask\\MegaMinds_CrudTask\\MegaMinds_CrudTask.csproj": {}
   },
   "projects": {
-    "D:\\MegaMinds\\MegaMinds_CrudTask\\MegaMinds_CrudTask\\MegaMinds_CrudTask.csproj": {
+    "D:\\megamind\\MegaMinds_CrudTask\\MegaMinds_CrudTask\\MegaMinds_CrudTask.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MegaMinds\\MegaMinds_CrudTask\\MegaMinds_CrudTask\\MegaMinds_CrudTask.csproj",
+        "projectUniqueName": "D:\\megamind\\MegaMinds_CrudTask\\MegaMinds_CrudTask\\MegaMinds_CrudTask.csproj",
         "projectName": "MegaMinds_CrudTask",
-        "projectPath": "D:\\MegaMinds\\MegaMinds_CrudTask\\MegaMinds_CrudTask\\MegaMinds_CrudTask.csproj",
+        "projectPath": "D:\\megamind\\MegaMinds_CrudTask\\MegaMinds_CrudTask\\MegaMinds_CrudTask.csproj",
         "packagesPath": "C:\\Users\\Shivangi\\.nuget\\packages\\",
-        "outputPath": "D:\\MegaMinds\\MegaMinds_CrudTask\\MegaMinds_CrudTask\\obj\\",
+        "outputPath": "D:\\megamind\\MegaMinds_CrudTask\\MegaMinds_CrudTask\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Shivangi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[5.0.1, )"

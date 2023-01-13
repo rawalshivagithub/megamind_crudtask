@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MegaMinds_CrudTask.Models
 {
@@ -23,12 +25,16 @@ namespace MegaMinds_CrudTask.Models
 		public string Address { get; set; }
 		
 		[Required]
-		[Display(Name = "State")]
-        public int State { get; set; }
+		[Display(Name = "State")]	
+        public int StateId { get; set; }
+		[ForeignKey(nameof(StateId))]
+		public virtual State State { get; set; }
 
         [Required]
 		[Display(Name = "City")]
-		public int City { get; set; }
+		public int CityId { get; set; }
+		[ForeignKey(nameof(CityId))]
+		public virtual City City { get; set; }
 
-	}
+    }
 }

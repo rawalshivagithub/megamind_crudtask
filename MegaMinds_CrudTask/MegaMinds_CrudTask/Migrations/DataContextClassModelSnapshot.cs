@@ -23,19 +23,24 @@ namespace MegaMinds_CrudTask.Migrations
 
             modelBuilder.Entity("MegaMinds_CrudTask.Models.City", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CityId"), 1L, 1);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("CityName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<int>("StateId")
+                        .HasColumnType("int");
 
-                    b.ToTable("City");
+                    b.HasKey("CityId");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("City", (string)null);
                 });
 
             modelBuilder.Entity("MegaMinds_CrudTask.Models.Details", b =>
@@ -50,9 +55,8 @@ namespace MegaMinds_CrudTask.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -66,30 +70,63 @@ namespace MegaMinds_CrudTask.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("StateId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Details");
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("StateId");
+
+                    b.ToTable("Details", (string)null);
                 });
 
             modelBuilder.Entity("MegaMinds_CrudTask.Models.State", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("StateId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StateId"), 1L, 1);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("StateName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("StateId");
 
-                    b.ToTable("State");
+                    b.ToTable("State", (string)null);
+                });
+
+            modelBuilder.Entity("MegaMinds_CrudTask.Models.City", b =>
+                {
+                    b.HasOne("MegaMinds_CrudTask.Models.State", "State")
+                        .WithMany()
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("State");
+                });
+
+            modelBuilder.Entity("MegaMinds_CrudTask.Models.Details", b =>
+                {
+                    b.HasOne("MegaMinds_CrudTask.Models.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MegaMinds_CrudTask.Models.State", "State")
+                        .WithMany()
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+
+                    b.Navigation("State");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,4 @@
-﻿@model MegaMinds_CrudTask.Models.Details
+﻿@model Details
 
 @{
     ViewData["Title"] = "Create";
@@ -21,28 +21,37 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="PhoneNumber" class="control-label"></label>
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="State" class="control-label"></label>
-                <input asp-for="State" class="form-control" />
-                <span asp-validation-for="State" class="text-danger"></span>
+                <label asp-for="StateId" class="control-label"></label>
+                <select name="StateId" class="form-control" asp-items="@ViewBag.states">
+                    <option>--Select--</option>
+                </select>
+                <span asp-validation-for="StateId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
+                <label asp-for="CityId" class="control-label"></label>
+                <select name="CityId" class="form-control" asp-items="@ViewBag.cities">
+                    <option>--Select--</option>
+                </select>
+                <span asp-validation-for="StateId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Submit" class="btn btn-primary" />
+                <input class="agree" type="checkbox" name="agree" value="1" />
+                <span class="item-text">Agree</span>
+                <input type="submit" value="Submit" class="btn btn-primary Btnsubmit" />
             </div>
         </form>
     </div>
@@ -56,11 +65,15 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+
     <script>
-        $(document).ready(function () {
-            $("#formname").on("change", "input:checkbox", function () {
-                $("#formname").submit();
-            });
-        });
+        $(".Btnsubmit").hide();
+        $(".agree").click(function () {
+            if ($(this).is(":checked")) {
+                $(".Btnsubmit").show();
+            } else {
+                $(".Btnsubmit").hide();
+            }
+        }); 
     </script>
 }
